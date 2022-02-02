@@ -50,15 +50,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |--------+------+------+------+------+------+----------.-----.  ,-------------+------+------+------+------+------+-----|
  * | LShift |   Y  |   X  |   C  |   V  |   B  |LALT+TAB|LShift|  |LShift|LShift|   N  |   M  | ,  ; | . :  | -  _ | Del  |
  * `----------------------+------+------+------+------+--------|  |------+------+------+------+------+----------------------'
- *                        | GUI  | CTRL | Space| Enter| Bksp   |  | Bksp | LArrow| DArrow| UArrow| RArrow|
- *                        |      |      | Alt  | Lower| Raise  |  | Lower| Raise |       |       |       |
+ *                        | GUI  | CTRL | Space| Bksp | Enter  |  |      | LArrow| DArrow| UArrow| RArrow|
+ *                        |      |      | Alt  |      | Raise  |  | Lower|       |       |       |       |
  *                        `------------------------------------'  `--------------------------------------'
  */
     [_QWERTZ] = LAYOUT(
       KC_ESC,  KC_Q,    KC_W,     KC_E,                 KC_R,               KC_T,                                DE_Z,                KC_U,                 KC_I,     KC_O,   KC_P,    DE_PLUS,
       KC_TAB,  KC_A,    KC_S,     KC_D,                 KC_F,               KC_G,                                KC_H,                KC_J,                 KC_K,     KC_L,   _______, DE_HASH,
       KC_LSFT, DE_Y,    KC_X,     KC_C,                 KC_V,               KC_B,                LALT(KC_TAB),   KC_LSFT,             LT(_ADJUST, _______), KC_LSFT,  KC_N,   KC_M,    DE_COMM, DE_DOT,   DE_MINS, KC_DEL,
-               LT(_ADJUST, KC_LGUI), KC_LCTRL, MT(MOD_LALT, KC_SPC), LT(_LOWER, KC_ENT), LT(_RAISE, KC_BSPC),    LT(_LOWER, KC_BSPC), LT(_RAISE, KC_LEFT),  KC_DOWN, KC_UP, KC_RIGHT
+               LT(_ADJUST, KC_LGUI), KC_LCTRL, MT(MOD_LALT, KC_SPC), KC_BSPC, LT(_RAISE, KC_ENTER),    LT(_LOWER, _______), KC_LEFT,  KC_DOWN, KC_UP, KC_RIGHT
     ),
 /*
  * Lower Layer: Symbols
@@ -159,8 +159,8 @@ static void render_qwerz(int is_master) {
         oled_write_P(PSTR("--------------------\n"), false);
         oled_write_P(PSTR("|LS|Y|X|C|V|B|AT|LS|\n"), false);
         oled_write_P(PSTR("--------------------\n"), false);
-        oled_write_P(PSTR("       |G|C| |En|BS|\n"), false);
-        oled_write_P(PSTR("       | | |A|Lo|Ra|\n"), false);
+        oled_write_P(PSTR("       |G|C| |BS|EN|\n"), false);
+        oled_write_P(PSTR("       | | |A|  |Ra|\n"), false);
     } else {
         oled_write_P(PSTR("      |Z|U|I|O|P|+*|\n"), false);
         oled_write_P(PSTR("--------------------\n"), false);
@@ -168,8 +168,8 @@ static void render_qwerz(int is_master) {
         oled_write_P(PSTR("--------------------\n"), false);
         oled_write_P(PSTR("|LS|LS|N|M|,|.|-|De|\n"), false);
         oled_write_P(PSTR("--------------------\n"), false);
-        oled_write_P(PSTR("|BS|LA|D|U|R|       \n"), false);
-        oled_write_P(PSTR("|Lo|Ra| | | |       \n"), false);
+        oled_write_P(PSTR("|  |LA|D|U|R|       \n"), false);
+        oled_write_P(PSTR("|Lo|  | | | |       \n"), false);
     }
 }
 
